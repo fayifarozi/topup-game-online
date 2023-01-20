@@ -1,0 +1,139 @@
+.detail .img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1.625rem;
+}
+
+.detail hr {
+    margin: 0;
+    background-color: #e7eaf5;
+    border: 0;
+    opacity: 1;
+}
+
+.detail input[type="text"] {
+    max-width: 437px;
+    border: 1px solid #0c145a;
+    padding: 0.75rem 1.625rem;
+    color: #0c145a;
+}
+
+.detail input[type="text"]:focus-within {
+    color: #0c145a;
+}
+
+.detail input[type="text"]::placeholder {
+    color: #ccd0dd;
+}
+
+.detail .detail-card {
+    transition: all 0.1s linear;
+    background-color: #f9faff;
+    border-radius: 1.625rem;
+    padding: 1.875rem;
+    cursor: pointer;
+}
+
+.detail input[type="radio"]:checked + .detail-card {
+    border: 2px solid #00baff;
+    background-color: rgba(0, 186, 255, 0.05);
+}
+
+.detail .detail-card #icon-check {
+    transition: all 0.1s linear;
+    opacity: 0;
+}
+
+.detail input[type="radio"]:checked + .detail-card #icon-check {
+    opacity: 1;
+}
+
+.detail .btn-submit {
+    background-color: #4d17e2;
+    padding: 0.75rem 3rem;
+}
+
+/* Checkout */
+.checkout {
+    /* max-width: 800px; */
+    margin-top: 0 !important;
+    background-color: #ffffff;
+}
+
+.checkout .img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 1.625rem;
+}
+
+.checkout .cropped {
+    width: 110px;
+    height: 140px;
+    overflow: hidden;
+    border-radius: 1.625rem;
+}
+
+.checkout .cropped img {
+    margin: -10px 0px 0px 0px;
+}
+
+.checkout hr {
+    margin: 0;
+    background-color: #e7eaf5;
+    border: 0;
+    opacity: 1;
+}
+
+.checkout span.purchase-details,
+.checkout span.payment-details {
+    display: block;
+    font-weight: 500;
+}
+
+.checkout .checkbox-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.checkout .btn-confirm-payment {
+    padding: 0.75rem 2.875rem;
+    background-color: #4d17e2;
+}
+
+.checkout .img-checkout {
+    width: 110px;
+    height: 140px;
+}
+
+/* Medium devices (landscape phones, 768px and up) */
+@media (min-width: 768px) {
+    .checkout span.purchase-details,
+    .checkout span.payment-details {
+        float: right;
+    }
+
+    .checkout .cropped {
+        width: 200px;
+        height: 130px;
+        overflow: hidden;
+        border-radius: 1.625rem;
+    }
+}
+@media (max-width: 568px) {
+    .checkout .btn-confirm-payment {
+        font-size: 1rem;
+        padding: 0.4rem;
+    }
+}
+@media (max-width: 768px) {
+    .checkout .btn-confirm-payment {
+        font-size: 1rem;
+        padding: 0.4rem;
+    }
+}
