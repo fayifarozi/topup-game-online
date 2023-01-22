@@ -24,7 +24,7 @@
                     <label>Email</label>
                 </div>
                 <div class="txt_field">
-                    <input type="text" name="password" required />
+                    <input type="password" name="password" required />
                     <label>Password</label>
                 </div>
                 <button class="btn-login" type="submit">Login</button>
