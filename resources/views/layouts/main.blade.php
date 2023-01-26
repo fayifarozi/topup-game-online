@@ -30,6 +30,7 @@
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/hero-product">Product</a></li>
+            <li><a href="/checkout-search">Search</a></li>
             <li><a href="/about">About Us</a></li>
           </ul>
         </div>

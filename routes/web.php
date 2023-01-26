@@ -11,7 +11,6 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Middleware\LoginMiddleware;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
