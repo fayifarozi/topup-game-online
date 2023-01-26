@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Payment;
-use Midtrans\Snap;
 
 class OrderController extends Controller
 {
@@ -31,7 +30,6 @@ class OrderController extends Controller
 
         return view('master.order.order-list',[
             'data' => $data->paginate(5)
-            // 'data' => Order::with('product')->filter(request(['search']))->latest()->paginate(5)->withQueryString()
         ]);
     }
 

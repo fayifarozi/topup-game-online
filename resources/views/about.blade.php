@@ -93,7 +93,7 @@
           </div>
         </div>
         <div class="item">
-          <img src="https://source.unsplash.com/random"team" />
+          <img src="https://source.unsplash.com/random" />
           <div class="inner">
             <div class="info">
               <h5>Victoria Lucky Mahendra | 07302</h5>

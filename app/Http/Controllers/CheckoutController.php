@@ -10,7 +10,18 @@ use Illuminate\Auth\Events\Validated;
 
 class CheckoutController extends Controller
 {   
+    public function index(){
+        $data = Order::with('product')->latest();
+        if(request('search')){
+            $data->where('order_code','like','%'.request('search').'%')
+            ->orWhere('user_game_id','like','%'.request('search').'%')
+            ->orWhere('email','like','%'.request('search').'%');
 
+            $find = $data->first();
+            return redirect()->route('checkDetail', ['order' => $find->_id]);
+        }
+        return view('checkout-search');
+    }
     public function mlbb(){
         $product = Product::where('game', 'Mobile Legends')->orderBy('price', 'asc')->get();
         return view('/game-form/form',[
@@ -94,7 +105,6 @@ class CheckoutController extends Controller
             $validatedData['email'] = request('email');
         }
         
-        // $validatedData = $request->validate($rules);
         $order_code = Order::generateCode();
         $validatedData['metode'] = null;
         $validatedData['status'] = Order::PROCESS;

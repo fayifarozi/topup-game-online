@@ -35,9 +35,10 @@ Route::get('/pubg-mobile', [CheckoutController::class,'pubg']);
 Route::get('/free-fire',[CheckoutController::class,'freefire']);
 Route::get('/valorant',[CheckoutController::class,'valorant']);
 
+Route::get('/checkout-search', [CheckoutController::class,'index']);
+Route::post('/checkout-search', [CheckoutController::class,'index']);
 Route::post('/checkout', [CheckoutController::class,'checkout']);
 Route::get('/checkout-detail/{order}', [CheckoutController::class,'checkoutDetails'])->name('checkDetail');
-
 
 Route::get('/payments/finish?{payment}',[PaymentController::class,'finish']);
 Route::get('/payments/unfinish?{payment}',[PaymentController::class,'unfinish']);
