@@ -8,7 +8,7 @@
   <div class="container">
     <div class="product__blocking">
       <div class="product__info" style="margin-top: 1.7rem">
-        <img class="product__info-img"src="img/common/{{ $image }}" alt="Title" />
+        <img class="product__info-img"src="/img/common/{{ $image }}" alt="Title" />
         <h2 class="produk__deskription" style="margin-top: 3rem">
             {{ $title }}
         </h2>
@@ -19,11 +19,12 @@
       <div class="product__purchase-form">
         <form action="/checkout" method="post">
           @csrf
+          <input type="hidden" id="total_price" name="total_price" value = "">
           <!-- Form-1 -->
           <div class="panel">
             <div class="panel-heading">
               <h2>Masukan User ID</h2>
-            </div>
+            </  div>
             <div class="panel-body">
               <div class="form-input">
                 <input type="text" name="user_game_id" class="form-control @error('user_game_id') is-invalid @enderror" placeholder="User ID" require />
@@ -46,7 +47,7 @@
                   <li class="product__card-denom">
                     <input type="radio" name="kode_id" id="denom-{{ $loop->iteration }}" value="{{ $row->kode_id }}" />
                     <label for="denom-{{ $loop->iteration }}" >
-                      <img class="product__img" src="img/denom-image/{{ $denomImg }}" alt="" />
+                      <img class="product__img" src="/img/denom-image/{{ $denomImg }}" alt="" />
                       <div class="product__detail-text">
                         <span id="item">{{ $row->item }}</span>
                         <br>
@@ -61,51 +62,14 @@
           </div>
           <!-- Form-3 -->
           <div class="panel">
-          <div class="panel-heading">
-              <h2>Pilih Metode Bayar</h2>
+            <div class="panel-heading  d-flex justify-content-space-between">
+              <h2>Total Bayar</h2>
+              <h2 class="color-palette-1" id="paytext-1"> </h2>
             </div>
-            <div class="panel-body">
+            <!-- <div class="panel-body">
               <div class="product-container">
-                <ul class="form-section__denom-group">
-                  <!-- card menu -->
-                  <li class="product__card-payment">
-                    <input type="radio" name="metode" id="p-1" value="Credit-Card" />
-                    <label for="p-1" class="d-flex justify-content-space-between ">
-                      <img class="product__img" src="img/payment/CREDIT_LOGO.png" alt="" />
-                    </label>
-                    <span class="product__detail-text text-lg color-palette-1" id="paytext-1"> </span>
-                  </li>
-                  <li class="product__card-payment">
-                    <input type="radio" name="metode" id="p-2" value="GoPay" />
-                    <label for="p-2">
-                      <img class="product__img" src="img/payment/GOPAY_LOGO.png" alt="" />
-                    </label>
-                    <span class="product__detail-text text-lg color-palette-1" id="paytext-2"> </span>
-                  </li>
-                  <li class="product__card-payment">
-                    <input type="radio" name="metode" id="p-3" value="ShopeePay" />
-                    <label for="p-3" >
-                      <img class="product__img" src="img/payment/SHOPEE_PAY_LOGO.png" alt="" />
-                    </label>
-                    <span class="product__detail-text text-lg color-palette-1" id="paytext-3"> </span>
-                  </li>
-                  <li class="product__card-payment">
-                    <input type="radio" name="metode" id="p-4" value="Bank" />
-                    <label for="p-4">
-                      <img class="product__img" src="img/payment/BANK_LOGO.png" alt="" />
-                    </label>
-                    <span class="product__detail-text text-lg color-palette-1" id="paytext-4"> <p> </p></span>
-                  </li>
-                  <li class="product__card-payment">
-                    <input type="radio" name="metode" id="p-5" value="Merchant" />
-                    <label for="p-5">
-                      <img class="product__img" src="img/payment/MERCHANT_LOGO.png" alt="" />
-                    </label>
-                    <span class="product__detail-text text-lg color-palette-1" id="paytext-5"> <p> </p></span>
-                  </li>
-                </ul>
               </div>
-            </div>
+            </div> -->
           </div>
           <!-- Form-4 -->
           <div class="panel">
@@ -143,14 +107,10 @@
     $(this).addClass("active").siblings().removeClass("active");
 
     var price = $(".product__card-denom.active #price").text();
-    $("#paytext-1,#paytext-2,#paytext-3,#paytext-4,#paytext-5").text(price);
+    $("#paytext-1").text(price);
+    var numericValue = parseFloat(price.match(/\d+(\.\d+)?/));
+    $("#total_price").val(numericValue);
 
-  });
-</script>
-
-<script type="text/javascript">
-  $(document).on("click", ".product__card-payment", function () {
-    $(this).addClass("active").siblings().removeClass("active");
   });
 </script>
 

@@ -159,6 +159,7 @@ class CheckoutController extends Controller
 	}
 
     public function checkoutDetails(Order $order){
+        // dd($order);
         return view('/checkout-detail',[
             'detail' => $order
         ]);

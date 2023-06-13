@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
-    //
     public function index(){
         return view('login');
     }
@@ -21,7 +20,11 @@ class LoginController extends Controller
             // $x = Hash::check($request->input('password'),$credentials->password);
             if(Hash::check($request->input('password'),$credentials->password)){
                 session()->put('login','True');
-                session()->put('idLogin','True');
+                session()->put('level',$credentials->level);
+                session()->put('idUser',$credentials->id);
+                session()->put('nameUser',$credentials->name);
+                session()->put('imageUser',$credentials->image);
+                // dd(Session()->all());
                 return redirect('/master');
             }else{
                 return back()->with('loginError', 'Login failed!!');

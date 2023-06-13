@@ -24,7 +24,7 @@ class ProductController extends Controller
             ->orWhere('price','like','%'.request('search').'%')
             ->orWhere('item','like','%'.request('search').'%');
         }
-        return view('master.product.product-list',[
+        return view('new-admin.product.product-list',[
             'data' => $data->paginate(5)
         ]);
     }
@@ -36,7 +36,7 @@ class ProductController extends Controller
      */
     public function create()
     { 
-        return view('master.product.create',[
+        return view('new-admin.product.create',[
             'kode_id' => fake()->unique()->regexify('[A-Z]{3}[0-9]{5}')
         ]);
     }
@@ -82,7 +82,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {  
-        return view('master.product.update',[
+        return view('new-admin.product.update',[
             'product' => $product
         ]);
     }

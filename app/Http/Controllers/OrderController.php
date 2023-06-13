@@ -28,7 +28,7 @@ class OrderController extends Controller
             ->orWhere('product.game','like','%'.request('search').'%');
         }
 
-        return view('master.order.order-list',[
+        return view('new-admin.order.order-list',[
             'data' => $data->paginate(5)
         ]);
     }
@@ -40,7 +40,7 @@ class OrderController extends Controller
             $data->where('order_code','like','%'.request('search').'%');
         }
 
-        return view('master.order.payment-list',[
+        return view('new-admin.order.payment-list',[
             'data' => $data->paginate(5)
         ]);
     }
@@ -48,7 +48,7 @@ class OrderController extends Controller
     public function create()
     {
         $product = Product::all();
-        return view('master.order.create',[
+        return view('new-admin.order.create',[
             'product' => $product
         ]);
     }
@@ -115,7 +115,7 @@ class OrderController extends Controller
 
     public function detail(Order $order)
     {
-        return view('master.order.detail',[
+        return view('new-admin.order.detail',[
             'detail' => $order,
             'product' => $order->product()
         ]);
@@ -124,7 +124,7 @@ class OrderController extends Controller
     public function edit(Order $order)
     {
         $product = Product::all();
-        return view('master.order.update',[
+        return view('new-admin.order.update',[
             'order' => $order,
             'product' => $product
         ]);

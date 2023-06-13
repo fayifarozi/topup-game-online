@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Storage;
+use App\Exports\AdminsExport;
+use Maatwebsite\Excel\Facades\Excel as Excel;
 
 class AdminController extends Controller
 {
@@ -18,8 +20,8 @@ class AdminController extends Controller
         // $data = Admin::limit(5)->get();
         // $data = Admin::all();
         $data = Admin::latest()->paginate(5);
-        return view('master.admin.admin-list',[
-            'data'=> $data
+        return view('new-admin.admin.admin-list', [
+            'data' => $data
         ]);
     }
 
@@ -31,7 +33,7 @@ class AdminController extends Controller
     public function create()
     {
         //
-        return view('master.admin.create');
+        return view('new-admin.admin.create');
     }
 
     /**
@@ -59,7 +61,7 @@ class AdminController extends Controller
 
         Admin::create($validatedData);
 
-        return redirect('/master/admin')->with('success','New admin has been added!');
+        return redirect('/master/admin')->with('success', 'New admin has been added!');
     }
 
     /**
@@ -82,7 +84,7 @@ class AdminController extends Controller
      */
     public function edit(Admin $admin)
     {
-        return view('master.admin.update',[
+        return view('new-admin.admin.update', [
             'admin' => $admin
         ]);
     }
@@ -95,7 +97,7 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Admin $admin)
-    {   
+    {
         // dd($admin);
         $rules = [
             'name' => 'required|max:255',
@@ -103,23 +105,23 @@ class AdminController extends Controller
             'image' => 'image'
         ];
 
-        if($request->email != $admin->email){
+        if ($request->email != $admin->email) {
             $rules['email'] = 'required|email|unique:admin';
         }
         $validatedData = $request->validate($rules);
-        
+
         if ($request->file('image')) {
-            if($request->oldImage){
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['image'] = $request->file('image')->store('admin-images');
         }
         // dd($validatedData);
 
-        Admin::where('_id',$admin->_id)
+        Admin::where('_id', $admin->_id)
             ->update($validatedData);
 
-        return redirect('/master/admin')->with('success','Update admin success!');
+        return redirect('/master/admin')->with('success', 'Update admin success!');
     }
 
     /**
@@ -132,6 +134,11 @@ class AdminController extends Controller
     {
         Storage::delete($admin->image);
         Admin::destroy($admin->_id);
-        return redirect('/master/admin')->with('success','Admin has been deleted!');
+        return redirect('/master/admin')->with('success', 'Admin has been deleted!');
+    }
+
+    public function export()
+    {
+        return Excel::download(new AdminsExport, 'admin.xlsx');
     }
 }

@@ -13,12 +13,13 @@ class Product extends Model
     protected $fillable = [
         'game',
         'kode_id',
+        'hero_id',
         'item',
         'price',
         'status'
     ];
-    // public function getRouteKeyName()
-    // {
-    //     return 'kode_id';
-    // }
+    public function heroProduct()
+    {
+        return $this->belongsTo(HeroProduct::class,'hero_id','hero_id');   
+    }
 }

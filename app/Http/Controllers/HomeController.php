@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    public function pageHome(){
+        return view('new-view.game');
+    }
+
     public function home(){
         return view('home');
     }

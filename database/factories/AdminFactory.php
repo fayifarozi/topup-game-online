@@ -23,7 +23,6 @@ class AdminFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'image' =>fake()->image(null, 200, 200, 'animals', true, true, 'cats', true, 'jpg'),
             'password' => Hash::make('123')
-            // 'password' => Hash::make(fake()->password(6,8))
         ];
     }
 }
