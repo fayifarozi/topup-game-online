@@ -11,85 +11,18 @@ use Illuminate\Auth\Events\Validated;
 class CheckoutController extends Controller
 {   
     public function index(){
-        $data = Order::with('product')->latest();
         if(request('search')){
+            $data = Order::with('product');
+            // dd($data);
             $data->where('order_code','like','%'.request('search').'%')
             ->orWhere('user_game_id','like','%'.request('search').'%')
             ->orWhere('email','like','%'.request('search').'%');
 
             $find = $data->first();
+            // dd($find);
             return redirect()->route('checkDetail', ['order' => $find->_id]);
         }
-        return view('checkout-search');
-    }
-    public function mlbb(){
-        $product = Product::where('game', 'Mobile Legends')->orderBy('price', 'asc')->get();
-        return view('/game-form/form',[
-            'product'=> $product,
-            'title' => "Valorant",
-            'deskripsi' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur sunt provident repellat expedita doloremque nostrum
-            quidem ullam laboriosam corrupti laudantium corporis ipsam,
-            tenetur optio consectetur iure! Ipsam voluptatum nisi soluta.",
-            'image' => "MLBB.jpg",
-            'denomImg' => "MLBB/Diamonds_item.png" 
-        ]);
-    }
-
-    public function valorant(){
-        $product = Product::where('game', 'Valorant')->orderBy('price', 'asc')->get();
-        return view('/game-form/form',[
-            'product'=> $product,
-            'title' => "Valorant",
-            'deskripsi' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur sunt provident repellat expedita doloremque nostrum
-            quidem ullam laboriosam corrupti laudantium corporis ipsam,
-            tenetur optio consectetur iure! Ipsam voluptatum nisi soluta.",
-            'image' => "VALORANT.jpg",
-            'denomImg' => "VALORANT/VALORANT_Points.png" 
-        ]);
-    }
-
-    public function genshin(){
-        $product = Product::where('game', 'Genshin Impact')->orderBy('price', 'asc')->get();
-        return view('/game-form/form',[
-            'product'=> $product,
-            'title' => "Genshin Impact",
-            'deskripsi' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur sunt provident repellat expedita doloremque nostrum
-            quidem ullam laboriosam corrupti laudantium corporis ipsam,
-            tenetur optio consectetur iure! Ipsam voluptatum nisi soluta.",
-            'image' => "GENSHIN.png",
-            'denomImg' => "GENSHIN/Genshin_Crystals.png" 
-        ]);
-    }
-
-    public function freefire(){
-        $product = Product::where('game', 'Free Fire')->orderBy('price', 'asc')->get();
-        return view('/game-form/form',[
-            'product'=> $product,
-            'title' => "Free Fire",
-            'deskripsi' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur sunt provident repellat expedita doloremque nostrum
-            quidem ullam laboriosam corrupti laudantium corporis ipsam,
-            tenetur optio consectetur iure! Ipsam voluptatum nisi soluta.",
-            'image' => "FREEFIRE.jpg",
-            'denomImg' => "FREE-FIRE/Freefire_diamonds.png" 
-        ]);
-    }
-
-    public function pubg(){
-        $product = Product::where('game', 'PUBG')->orderBy('price', 'asc')->get();
-        return view('/game-form/form',[
-            'product'=> $product,
-            'title' => "PUBG Mobile",
-            'deskripsi' => "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Consequatur sunt provident repellat expedita doloremque nostrum
-            quidem ullam laboriosam corrupti laudantium corporis ipsam,
-            tenetur optio consectetur iure! Ipsam voluptatum nisi soluta.",
-            'image' => "PUBG.png",
-            'denomImg' => "VALORANT/VALORANT_Points.png" 
-        ]);
+        return view('new-view.checkout-search');
     }
 
     public function checkout(Request $request)
@@ -159,8 +92,7 @@ class CheckoutController extends Controller
 	}
 
     public function checkoutDetails(Order $order){
-        // dd($order);
-        return view('/checkout-detail',[
+        return view('new-view.checkout-detail',[
             'detail' => $order
         ]);
     }

@@ -6,12 +6,12 @@
 
 <div class="section">
   <div class="container">
-    <div class="content-section">
+    <div class="content-section p-5">
       <div class="title">
         <h1>~~TENTANG KAMI~~</h1>
       </div>
       <div class="content">
-        <h3>DJUDUL</h3>
+        <h3>JUDUL</h3>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -22,14 +22,7 @@
           <a href="">Read More</a>
         </div>
       </div>
-      <div class="social">
-        <a href=""><i class="fab fa-facebook-f"></i></a>
-        <a href=""><i class="fab fa-twitter"></i></a>
-        <a href=""><i class="fab fa-instagram"></i></a>
-      </div>
-    </div>
-    <div class="image-section">
-      <img src="img/1.jpg" />
+
     </div>
   </div>
 </div>

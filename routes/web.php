@@ -11,7 +11,6 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Middleware\LoginMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,23 +23,9 @@ use App\Http\Middleware\LoginMiddleware;
 |
 */
 
-
-Route::get('/1', [HeroProductController::class, 'pagehome']);
-Route::post('/test/create', [HeroProductController::class, 'store']);
-Route::get('/test/{path}', [HeroProductController::class, 'gamePath']);
-
-// Route::get('/', [HomeController::class, 'home']);
-// Route::get('/hero-product', [HomeController::class, 'product']);
-// Route::get('/about', [HomeController::class, 'about']);
-
-Route::get('/', [HeroProductController::class, 'pagehome']);
-Route::get('/about', [HeroProductController::class, 'pageAbout']);
-
-Route::get('/mobile-legends', [CheckoutController::class, 'mlbb']);
-Route::get('/genshin-impact', [CheckoutController::class, 'genshin']);
-Route::get('/pubg-mobile', [CheckoutController::class, 'pubg']);
-Route::get('/free-fire', [CheckoutController::class, 'freefire']);
-Route::get('/valorant', [CheckoutController::class, 'valorant']);
+Route::get('/', [HomeController::class, 'pagehome']);
+Route::get('/about', [HomeController::class, 'pageAbout']);
+Route::get('/topup/{path}', [HomeController::class, 'gamePath']);
 
 Route::get('/checkout-search', [CheckoutController::class, 'index']);
 Route::post('/checkout-search', [CheckoutController::class, 'index']);
@@ -55,13 +40,16 @@ Route::get('/login', [LoginController::class, 'index']);
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::get('/logout', [LoginController::class, 'logout']);
 
-Route::get('/master', [DashboardController::class, 'index'])->middleware([LoginMiddleware::class]);
-
-Route::prefix('/master')->group(function () {
-    Route::resource('/admin', AdminController::class);
-    Route::resource('/product', ProductController::class);
-    Route::resource('/order', OrderController::class);
-    Route::get('/order/{order}/detail', [OrderController::class, 'detail']);
-    Route::get('/payment', [OrderController::class, 'notifpayment']);
-    Route::get('/export', [AdminController::class, 'export']);
-})->middleware([LoginMiddleware::class]);
+Route::middleware(['is_login'])->group(function () {
+    Route::prefix('/master')->group(function () {
+        Route::get('/', [DashboardController::class, 'index']);
+        Route::resource('/admin', AdminController::class);
+        Route::resource('/hero-product', HeroProductController::class);
+        Route::post('/hero-product/update-status', [HeroProductController::class,'updateStatus'])->name('hero-product.updateStatus');
+        Route::resource('/product', ProductController::class);
+        Route::resource('/order', OrderController::class);
+        Route::get('/order/{order}/detail', [OrderController::class, 'detail']);
+        Route::get('/payment', [OrderController::class, 'notifpayment']);
+        Route::get('/export', [AdminController::class, 'export']);
+    });
+});

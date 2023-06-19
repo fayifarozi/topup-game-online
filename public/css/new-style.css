@@ -81,6 +81,10 @@ swiper-slide img {
     list-style-type: none;
 }
 
+ul.form-section__denom-group {
+    padding-left: 0 !important;
+}
+
 .product__card-denom {
     position: relative;
     background-color: rgb(249, 249, 249);
@@ -215,11 +219,6 @@ input[type="radio"] {
     margin-top: 20px;
 }
 
-.content-section {
-    float: left;
-    width: 55%;
-}
-
 .image-section {
     float: right;
     width: 40%;
@@ -286,7 +285,6 @@ input[type="radio"] {
         width: 80%;
         display: block;
         margin: auto;
-        padding-top: 50px;
     }
 
     .content-section {

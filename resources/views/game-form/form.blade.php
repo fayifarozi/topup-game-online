@@ -7,9 +7,9 @@
 <section>
   <div class="container">
     <div class="row">
-      <div class="col-12 col-sm-6">
+      <div class="col-12 col-sm-4">
         <div class="card border-0" style="margin-top: 1.7rem">
-          <img class="product__info-img"src="/img/common/{{ $image }}" alt="Title" />
+          <img class="product__info-img"src="/images/core/common/{{ $image }}" alt="Title" />
           <h2 class="produk__deskription" style="margin-top: 1rem">
               {{ $title }}
           </h2>
@@ -18,11 +18,10 @@
           </p>
         </div>
       </div>
-      <div class="col-12 col-sm-6">
+      <div class="col-12 col-sm-8">
           <form action="/checkout" method="post">
             @csrf
             <input type="hidden" id="total_price" name="total_price" value = "">
-            <!-- Form-1 -->
             <div class="panel" style="margin-top: 1.7rem;">
               <div class="panel-heading">
                 <h2>Masukan User ID</h2>
@@ -36,7 +35,6 @@
                 </div>
               </div>
             </div>
-            <!-- Form-2 -->
             <div class="panel">
               <div class="panel-heading">
                 <h2>Pilih Nominal Top Up</h2>
@@ -45,10 +43,10 @@
                 <div class="product-container">
                     <ul class="form-section__denom-group">
                       @foreach($product as $row)
-                      <li class="product__card-denom">
+                      <li class="product__card-denom" style="max-width: 15rem">
                         <input type="radio" name="kode_id" id="denom-{{ $loop->iteration }}" value="{{ $row->kode_id }}" />
                         <label for="denom-{{ $loop->iteration }}" >
-                          <img class="product__img" src="/img/denom-image/{{ $denomImg }}" alt="" />
+                          <img class="product__img" src="/images/core/denom-image/{{ $denomImg }}" alt="" />
                           <div class="product__detail-text">
                             <span id="item">{{ $row->item }}</span>
                             <br>
@@ -61,14 +59,12 @@
                 </div>
               </div>
             </div>
-            <!-- Form-3 -->
             <div class="panel">
               <div class="panel-heading d-flex justify-content-between">
                 <h2>Total Bayar</h2>
                 <h2 class="color-palette-1" id="paytext-1"> </h2>
               </div>
             </div>
-            <!-- Form-4 -->
             <div class="panel">
               <div class="panel-heading">
                 <h2>Beli</h2>
@@ -93,13 +89,8 @@
     </div>
   </div>
 </section>
-
-<script
-  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"
-  integrity="sha512-CX7sDOp7UTAq+i1FYIlf9Uo27x4os+kGeoT7rgwvY+4dmjqV0IuE/Bl5hVsjnQPQiTOhAX1O2r2j5bjsFBvv/A=="
-  crossorigin="anonymous"
-  referrerpolicy="no-referrer"
-></script>
+@endsection()
+@section('script')
 <script type="text/javascript">
   $(document).on("click", ".product__card-denom", function () {
     $(this).addClass("active").siblings().removeClass("active");
@@ -111,5 +102,4 @@
 
   });
 </script>
-
 @endsection()

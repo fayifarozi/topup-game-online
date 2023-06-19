@@ -17,7 +17,7 @@ class LoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::has('login')){
+        if(Session::has('login') === true){
             return $next($request);
         }else{
             return redirect('/login');

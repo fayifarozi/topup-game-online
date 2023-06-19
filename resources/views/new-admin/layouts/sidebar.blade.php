@@ -4,7 +4,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="logo">
                         <a href="">
-                            <img src="/img/Logo.png" alt="Logo" srcset="">
+                            <img src="/images/core/Logo.png" alt="Logo" srcset="">
                         </a>
                     </div>
                     <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
@@ -46,7 +46,7 @@
                         </a>
                         <ul class="submenu ">
                             <li class="submenu-item ">
-                                <a href="">Hero Products</a>
+                                <a href="/master/hero-product">Hero Products</a>
                             </li>
                             <li class="submenu-item ">
                                 <a href="/master/product">Item Products</a>

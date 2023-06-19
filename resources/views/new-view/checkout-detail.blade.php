@@ -34,9 +34,9 @@
                 <p class="text-lg color-palette-1 mb-20">Status <span class="purchase-details">{{ $detail->status }}</span></p>
             </div>
             <div class="d-flex justify-content-evenly">
-                <a href="/hero-product" class="btn btn-confirm-payment fw-medium text-lg mx-2">Back</a>
+                <a href="/" class="btn btn-confirm-payment fw-medium text-white text-lg mx-2">Back</a>
                 @if($detail->payment_status != "paid")
-                <button id="pay-button" class="btn btn-confirm-payment text-lg mx-2 ">Proceed to Payment</button>
+                <button id="pay-button" class="btn btn-confirm-payment text-white text-lg mx-2 ">Proceed to Payment</button>
                 @endif
             </div>
         </div>

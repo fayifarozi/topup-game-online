@@ -17,8 +17,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        // $data = Admin::limit(5)->get();
-        // $data = Admin::all();
         $data = Admin::latest()->paginate(5);
         return view('new-admin.admin.admin-list', [
             'data' => $data
@@ -45,20 +43,21 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        // return $request->all();
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'email' => 'required|email|unique:admin',
-            'password' => 'required|min:5|max:255',
-            'image' => 'image|file|max:1024'
+            'password' => 'required',
         ]);
+        $validatedData['level'] = 'admin';
 
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('admin-images');
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images/profiles'), $imageName);
+            $validatedData['image'] = $imageName;
         } else {
             $validatedData['image'] = null;
         }
-
         Admin::create($validatedData);
 
         return redirect('/master/admin')->with('success', 'New admin has been added!');
@@ -98,11 +97,10 @@ class AdminController extends Controller
      */
     public function update(Request $request, Admin $admin)
     {
-        // dd($admin);
+        // dd($request->all());
         $rules = [
             'name' => 'required|max:255',
             'password' => 'required|min:5|max:255',
-            'image' => 'image'
         ];
 
         if ($request->email != $admin->email) {
@@ -110,16 +108,24 @@ class AdminController extends Controller
         }
         $validatedData = $request->validate($rules);
 
-        if ($request->file('image')) {
-            if ($request->oldImage) {
-                Storage::delete($request->oldImage);
-            }
-            $validatedData['image'] = $request->file('image')->store('admin-images');
+        if ($request->level) {
+            $validatedData['level'] = $request->level;
         }
-        // dd($validatedData);
 
-        Admin::where('_id', $admin->_id)
-            ->update($validatedData);
+        if ($request->hasFile('image')) {
+            if($request->image_old){
+                $imagePath = public_path('images/profiles/' . $request->image_old);
+                // dd($imagePath);
+                if (file_exists($imagePath)) {
+                    unlink($imagePath);
+                }
+            }
+            $imageNewName = time().'.'.$request->image->extension();
+            $request->image->move(public_path('images/profiles'), $imageNewName);
+            $validatedData['image'] = $imageNewName;
+        }
+
+        Admin::where('_id', $admin->_id)->update($validatedData);
 
         return redirect('/master/admin')->with('success', 'Update admin success!');
     }

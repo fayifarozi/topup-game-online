@@ -11,6 +11,7 @@
     
     <!-- Fonts and Main Stylesheets -->
     <link rel="stylesheet" href="/css/new-style.css">
+    <link rel="stylesheet" href="/css/checkout.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700;800;900&display=swap"/>
@@ -31,7 +32,7 @@
                             
                         <a class="logo" href="#">
                             <!-- <img src="assets/img/Header-1.png" alt="Logo" width="30" height="24"> -->
-                            <img src="/img/Logo.png" alt="Logo" height="50">
+                            <img src="/images/core/Logo.png" alt="Logo" height="50">
                         </a>
                     </div>
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
@@ -48,7 +49,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="#">Cek Status Pemesanan</a>
+                                        <a class="dropdown-item" href="/checkout-search">Cek Status Pemesanan</a>
                                     </li>
                                 </ul>
                             </li>
@@ -155,6 +156,8 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    
+    @yield('script')
 </body>
 </html>
 

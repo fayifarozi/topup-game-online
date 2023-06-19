@@ -19,7 +19,7 @@ class LoginController extends Controller
         if($credentials){
             // $x = Hash::check($request->input('password'),$credentials->password);
             if(Hash::check($request->input('password'),$credentials->password)){
-                session()->put('login','True');
+                session()->put('login',true);
                 session()->put('level',$credentials->level);
                 session()->put('idUser',$credentials->id);
                 session()->put('nameUser',$credentials->name);
@@ -34,7 +34,7 @@ class LoginController extends Controller
         }
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Session::flush();
         return redirect('/login');

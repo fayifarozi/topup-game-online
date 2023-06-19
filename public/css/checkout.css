@@ -53,6 +53,10 @@
     padding: 0.75rem 3rem;
 }
 
+.detail .btn-submit:hover {
+    background-color: #4d17e2;
+    padding: 0.75rem 3rem;
+}
 /* Checkout */
 .checkout {
     /* max-width: 800px; */
@@ -104,6 +108,10 @@
 .checkout .btn-confirm-payment {
     padding: 0.75rem 2.875rem;
     background-color: #4d17e2;
+}
+
+.checkout .btn-confirm-payment:hover {
+    background-color: #a385f4;
 }
 
 .checkout .img-checkout {
