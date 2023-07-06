@@ -89,7 +89,7 @@
           <img src="https://source.unsplash.com/random" />
           <div class="inner">
             <div class="info">
-              <h5>Victoria Lucky Mahendra | 07302</h5>
+              <h5>Lorem ipsum dolor sit amet. | 00000</h5>
               <p>Designer, Ide Script</p>
               <div class="social-links">
                 <a href=""><i class="fab fa-facebook-f"></i></a>

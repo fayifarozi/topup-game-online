@@ -56,15 +56,15 @@
                         </div>
                         <div class="card-footer d-flex justify-content-center gap-1 border-0" >
                             <a href="{{ route('hero-product.edit', ['hero_product' => $row->_id]) }}" class="btn btn-primary">Edit</a>
-                            <form method="POST" action="{{ route('hero-product.updateStatus')}}" id="updateStatus">
+                            <form method="POST" action="{{ route('hero-product.updateStatus') }}" id="updateStatus">
                                 @csrf
-                                <input type="hidden" name="hero_product" value="{{ $row->field_id}}">
+                                <input type="hidden" name="hero_product" value="{{ $row->_id}}">
                                 @if( $row->status == 'active')
                                 <input type="hidden" name="status" value="deactive">
-                                <button type="button" class="btn btn-danger" onclick="deleteConfirm()">Deactive</button>
+                                <button type="button" class="btn btn-danger" onclick="updateStatus()">Deactive</button>
                                 @else
                                 <input type="hidden" name="status" value="active">
-                                <button type="button" class="btn btn-danger" onclick="deleteConfirm()">Active</button>
+                                <button type="button" class="btn btn-danger" onclick="updateStatus()">Active</button>
                                 @endif
                             </form>
                         </div>
@@ -76,3 +76,21 @@
     </div>
 </div>
 @endsection()
+@section('script')
+<script>
+    function updateStatus() {
+        Swal.fire({
+            title: "Confirmation",
+            text: "Are you sure you want to change status ?",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonText: "Yes",
+            cancelButtonText: "No"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById("updateStatus").submit();
+            }
+        });
+    }
+</script>
+@endsection

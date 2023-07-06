@@ -7,9 +7,7 @@
 ## Requirments
 
 -   **PHP** v8.0.2+
--   **Yarn** v1.20
--   **NodeJS** v14.16
--   **Sequelize** v6+
+-   **Composer** v2.5.6+
 
 ## Technology Stack
 
@@ -25,4 +23,5 @@
 
 1. Clone repository
 2. Setup key midtrans in ENV File `.env.example`
-3. Open Command or Terminal and run **php artisan serve**
+3. Open Command or Terminal and Write `composer install`
+4. Write in terminal **php artisan serve**
