@@ -42,7 +42,7 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::middleware(['is_login'])->group(function () {
     Route::prefix('/master')->group(function () {
-        Route::get('/', [DashboardController::class, 'index']);
+        Route::get('/', [DashboardController::class, 'index'])->name('master');
         Route::resource('/admin', AdminController::class);
         Route::resource('/hero-product', HeroProductController::class);
         Route::post('/hero-product/update-status', [HeroProductController::class,'updateStatus'])->name('hero-product.updateStatus');

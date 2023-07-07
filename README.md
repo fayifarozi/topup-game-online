@@ -8,6 +8,7 @@
 
 -   **PHP** v8.0.2+
 -   **Composer** v2.5.6+
+-   **MongoDB**
 
 ## Technology Stack
 

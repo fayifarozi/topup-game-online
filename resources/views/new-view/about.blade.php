@@ -44,7 +44,7 @@
           <img src="https://source.unsplash.com/random" alt="team" />
           <div class="inner">
             <div class="info">
-              <h5>Achmad Fayi Farozi | 07323</h5>
+              <h5>Lorem ipsum dolor sit amet. | 00000</h5>
               <p>Designer, Front End</p>
               <div class="social-links">
                 <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -59,7 +59,7 @@
           <img src="https://source.unsplash.com/random" alt="team" />
           <div class="inner">
             <div class="info">
-              <h5>Caesario Putra Mahendra | 07340</h5>
+              <h5>Lorem ipsum dolor sit amet. | 00000</h5>
               <p>Designer, Ide Script</p>
               <div class="social-links">
                 <a href=""><i class="fab fa-facebook-f"></i></a>
@@ -74,7 +74,7 @@
           <img src="https://source.unsplash.com/random" alt="team" />
           <div class="inner">
             <div class="info">
-              <h5>Bagas Aulifia Riski Putra Wahyu | 07335</h5>
+              <h5>Lorem ipsum dolor sit amet. | 00000</h5>
               <p>Designer, Front End, Analis</p>
               <div class="social-links">
                 <a href=""><i class="fab fa-facebook-f"></i></a>

@@ -3,8 +3,22 @@
 @section('title','CakStore | Admin')
 
 @section('content')
+    <div class="page-heading">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Voucher Game</h3>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('master')}}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Voucher</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
     <div class="card">
-        <h2 class="text-4xl fw-bold color-palette-1 mb-30 p-3">List Product</h2>
         <div class="table-responsive text-nowrap p-3">
             <div class="row justify-content-between">
                 <div class="col-auto">

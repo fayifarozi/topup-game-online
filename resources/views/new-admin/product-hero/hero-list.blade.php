@@ -3,8 +3,21 @@
 @section('title','CakStore | Admin')
 
 @section('content')
+
 <div class="page-heading">
-    <h2>List Hero Product</h2>
+    <div class="row">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+            <h3>List Game</h3>
+        </div>
+        <div class="col-12 col-md-6 order-md-2 order-first">
+            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ route('master')}}">Dashboard</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Game</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 </div>
 <div class="page-content">
     <div class="card">
